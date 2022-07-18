@@ -5,6 +5,11 @@ Python implementation of [Manifold Inference from Neural Dynamics](https://www.b
 
 MIND is an [unsupervised learning](https://en.wikipedia.org/wiki/Unsupervised_learning) algortihm designed to discover/reveal low-dimensional manifolds from high-dimensional dynamical/time series data (e.g., neural recording data). 
 
+This implementation follows closely the method of the original paper:
+> [Low, R. J., Lewallen, S., Aronov, D., Nevers, R. & Tank, D. W. 
+Probing variability in a cognitive map using manifold inference from neural dynamics. 
+Biorxiv 418939 (2018) doi:10.1101/418939.](https://www.biorxiv.org/content/10.1101/418939v2)
+
 ## About this code
 
 
