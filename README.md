@@ -5,8 +5,14 @@ Python implementation of [Manifold Inference from Neural Dynamics](https://www.b
 
 MIND is an [unsupervised learning](https://en.wikipedia.org/wiki/Unsupervised_learning) algortihm designed to discover/reveal low-dimensional manifolds from high-dimensional dynamical/time series data. The method was co-invented by *Ryan Low* and *Sam Lewallen* to analyze neural recording data and is brilliantly explained in their [BioRxiv publication](https://www.biorxiv.org/content/10.1101/418939v2). For an additional example of MIND in action, check out this excellent work by [Nieh et al. 2021](https://www.nature.com/articles/s41586-021-03652-7).  
 
-The schematic below presents in a nutshell the internal workings of MIND:
-><img src="https://github.com/qferryAI/annotated_MIND/blob/main/pics/mind_schematic.png" style='width: 50%'>
+The schematic below presents the internal workings of MIND (adapted from [Low et al. 2018](https://www.biorxiv.org/content/10.1101/418939v2)):
+><img src="https://github.com/qferryAI/annotated_MIND/blob/main/pics/mind_schematic.png" style='width: 75%'>
+
+The algorithm analyzes a series of trajectories (i.e., sequence of states) in a high-dimensional state space (here neural activity) and attempt to extract the low-dimensional manifold they are believed to be restricted to. In order to do that, MIND implements the following steps:
+1. Fit a random forest to the data. The forest is composed of N trees that partition the states into local neighborhoods and fit a generative model ([probabilistic pca]](https://www.robots.ox.ac.uk/~cvrg/hilary2006/ppca.pdf)) over successor states for each neighborhood. 
+2. Use inferred transision probabilities from the random forest and a shortest path algorithm to computes global distances between state pairs in the state space.
+3. Embed data in a lower dimensional space using [multidimensional scaling](https://en.wikipedia.org/wiki/Multidimensional_scaling) on the global distance matrix, followed with optional gradient-based optimization of the coordinates.
+4. Find optimal [locally linear embedding](https://cs.nyu.edu/~roweis/lle/papers/lleintro.pdf) (LLE) parameters to map novel states to the manifold and back.
 
 ## About this code
 
