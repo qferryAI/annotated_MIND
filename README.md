@@ -22,6 +22,8 @@ mind.fit(X, Xp, *args, **kwargs) # generates MIND embedding from dynamical data
 Y = mind.transform(X, *args, **kwargs) # maps high-dimensional state to low-dimensional embedding
 X = mind.inverse_transform(Y, *args, **kwargs) # performs reverse mapping
 ```
+See [this jupyter notebook](https://github.com/qferryAI/annotated_MIND/blob/main/mind_demo.ipynb) for detail explanations and demo on synthetic data. In this notebook, you'll learn to apply MIND to recover a 2-dimensional [Swiss roll manifold](https://scikit-learn.org/stable/auto_examples/manifold/plot_swissroll.html) embedded into a 3-dimensional state spaces as shown below: 
+><img src="https://github.com/qferryAI/annotated_MIND/blob/main/pics/mind_notebook_01.png" style='width: 50%'>
 
 ## Module requirements
 
