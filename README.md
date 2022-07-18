@@ -15,6 +15,14 @@ This implementation follows closely the method of the original paper:
 Probing variability in a cognitive map using manifold inference from neural dynamics. 
 Biorxiv 418939 (2018) doi:10.1101/418939.](https://www.biorxiv.org/content/10.1101/418939v2)
 
+All functions necesseray to generate MIND embeddings, as well as perform forward and reverse transforms between high and low-dimensional spaces, are conveniently wrapped up as methods of the `MIND` class (see [mind.py](https://github.com/qferryAI/annotated_MIND/blob/main/mind.py) for annotated code). The `MIND` class follows the scikit-learn syntax and implements the following methods:
+```python
+mind = MIND(*args, **kwargs) # creates a MIND instance
+mind.fit(X, Xp, *args, **kwargs) # generates MIND embedding from dynamical data
+Y = mind.transform(X, *args, **kwargs) # maps high-dimensional state to low-dimensional embedding
+X = mind.inverse_transform(Y, *args, **kwargs) # performs reverse mapping
+```
+
 ## Module requirements
 
 This code relies on the following Python modules:
@@ -24,7 +32,7 @@ This code relies on the following Python modules:
 - [scikit-learn](https://scikit-learn.org/stable/) for kNN & dimensionality reduction algorithms.
 - [matplotlib](https://matplotlib.org/) for visualization.
 
-To make things easier, I am providing the annotated_MIND.yaml file of the conda environment I used for this project. To build and use the same environment, make sure you have [conda](https://docs.conda.io/en/latest/) install on your machine, clone this repo, navigate to the folder, and enter the following command line:
+To make things easier, I am providing the [annotated_MIND.yaml](https://github.com/qferryAI/annotated_MIND/blob/main/annotated_MIND.yaml) file of the conda environment I used for this project. To build and use the same environment, make sure you have [conda](https://docs.conda.io/en/latest/) install on your machine, clone this repo, navigate to the folder, and enter the following command line in your terminal (or [Anaconda prompt](https://docs.conda.io/projects/conda/en/latest/user-guide/getting-started.html) for Windows users):
 `conda env create -f annotated_MIND.yaml`.
 
 ## Enjoy! :wink:
